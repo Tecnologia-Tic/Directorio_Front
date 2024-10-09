@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Eliminar Usuario</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+  <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+  <link rel="stylesheet" href="Estilos/eliminar.css">
+</head>
+<body>
+  <div class="container">
+    <h2 class="text-center mt-4" style="font-size: 35px; font-family: 'Nexa Bold'">Eliminar Usuario</h2>
+    
+    <form action="../backend/eliminar.php" method="POST" id="eliminarForm">
+      <div class="form-group">
+        <label for="departamento" style="font-size: 16px; font-family: 'Nexa Bold'">Selecciona el Departamento:</label>
+        <select class="form-control" id="departamento" name="departamento" required style="font-size: 16px; font-family: 'Nexa Bold'">
+          <option value="">Selecciona un departamento</option>
+          <option value="tecnologia">Tecnología</option>
+          <option value="financiera">Financiera</option>
+          <option value="fundacion">Fundación</option>
+          <option value="universidad">Universidad</option>
+          <option value="optimizacion">Optimización</option>
+          <option value="presidencia">Presidencia</option>
+        </select>
+      </div>
+  
+      <div class="form-group">
+          <label for="usuario" style="font-size: 16px; font-family: 'Nexa Bold'">Selecciona el Usuario:</label>
+          <select class="form-control" id="usuario" name="usuario" required style="font-size: 16px; font-family: 'Nexa Bold'">
+              <option value="">Selecciona un usuario</option>
+          </select>
+      </div>
+  
+      <input type="hidden" id="usuario_id" name="usuario_id" value="">
+  
+      <button type="submit" class="btn btn-danger">Eliminar</button>
+      <a href="formulario.html" class="btn btn-secondary">Cancelar</a>
+    </form>
+  
+    <script>
+      $('#departamento').change(function() {
+        var departamento = $(this).val();
+        console.log("Departamento seleccionado: " + departamento);  // Depuración
+        $('#usuario').empty(); // Limpiar el desplegable de usuarios
+
+        if (departamento) {
+          $.ajax({
+              url: '../backend/cargar_usuarios.php',
+              type: 'POST',
+              data: { departamento: departamento }, // Enviar 'departamento'
+              dataType: 'json',
+              success: function(response) {
+                  $('#usuario').empty(); // Limpiar antes de agregar opciones
+
+                  if (response.error) {
+                      console.error("Error del servidor: " + response.error);
+                      $('#usuario').append('<option value="">Error al cargar usuarios</option>');
+                  } else if (response.length > 0) {
+                      // Agregar las opciones de usuario
+                      $.each(response, function(index, usuario) {
+                          $('#usuario').append('<option value="' + usuario.id + '">' + 
+                              usuario.cargo + ' - ' + 
+                              usuario.nombre + ' - ' + 
+                              usuario.extension + ' - ' + 
+                              usuario.correo + 
+                              '</option>');
+                      });
+                  } else {
+                      $('#usuario').append('<option value="">No hay usuarios disponibles</option>');
+                  }
+              },
+              error: function(xhr, status, error) {
+                  console.error("Error AJAX: " + status + ": " + error);
+                  console.error("Respuesta del servidor: " + xhr.responseText);
+                  $('#usuario').append('<option value="">Error al cargar usuarios</option>');
+              }
+          });
+        }
+      });
+
+      // Añadir la opción para recargar la página después de eliminar el usuario
+      $('#eliminarForm').submit(function(e) {
+        e.preventDefault(); // Evitar el comportamiento normal del formulario
+        var form = $(this);
+
+        $.ajax({
+          url: form.attr('action'),
+          type: form.attr('method'),
+          data: form.serialize(),
+          success: function(response) {
+            alert('Usuario eliminado correctamente');
+            location.reload(); // Recargar la página
+          },
+          error: function(xhr, status, error) {
+            alert('Error al eliminar el usuario');
+          }
+        });
+      });
+    </script>
+  </div>
+</body>
+</html>

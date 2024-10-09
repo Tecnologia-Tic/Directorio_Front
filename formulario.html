@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Agregar Nuevo Registro</title>
+  
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+  <link rel="stylesheet" href="Estilos/botones.css">
+  <link rel="stylesheet" href="Estilos/formulario.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+
+  <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script> <!-- jQuery necesario para AJAX -->
+
+</head>
+<body>
+  <div class="container form-container">
+    <h2 class="text-center mt-4" style="font-size: 30px; font-family: 'Nexa Bold'">
+      Agregar Nuevo Registro
+    </h2>
+    
+    <!-- Formulario para agregar datos -->
+    <form id="addUserForm" method="POST">
+      <div class="form-group" style="font-size: 17px; font-family: 'Nexa Bold'">
+        <label for="cargo">Cargo:</label>
+        <input type="text" class="form-control" id="cargo" name="cargo" required>
+      </div>
+      <div class="form-group" style="font-size: 17px; font-family: 'Nexa Bold'">
+        <label for="nombre">Nombre:</label>
+        <input type="text" class="form-control" id="nombre" name="nombre" required>
+      </div>
+      <div class="form-group" style="font-size: 17px; font-family: 'Nexa Bold'">
+        <label for="extension">Extensión:</label>
+        <input type="text" class="form-control" id="extension" name="extension" required>
+      </div>
+      <div class="form-group" style="font-size: 17px; font-family: 'Nexa Bold'">
+        <label for="correo">Correo Electrónico:</label>
+        <input type="email" class="form-control" id="correo" name="correo" required>
+      </div>
+      
+      <!-- Menú desplegable para seleccionar la tabla -->
+      <div class="form-group" style="font-size: 17px; font-family: 'Nexa Bold'">
+        <label for="tabla">Selecciona la tabla:</label>
+        <select class="form-control" id="tabla" name="tabla" required>
+          <option value="tecnologia">Tecnología</option>
+          <option value="financiera">Financiera</option>
+          <option value="fundacion">Fundación</option>
+          <option value="universidad">Universidad</option>
+          <option value="optimizacion">Optimización</option>
+          <option value="presidencia">Presidencia</option>
+        </select>
+      </div>
+
+      <button type="submit" class="btn btn-blue" style="font-size: 17px; font-family: 'Nexa Bold'">Guardar</button>
+      <a href="directorio.html" class="btn btn-secondary" style="font-size: 17px; font-family: 'Nexa Bold'">Cancelar</a>
+      
+    </form>
+  </div>
+
+  <div class="fixed-buttons">
+    <a href="editar.html" class="btn btn-warning">
+      <i class="fa-solid fa-pen"></i>
+    </a>
+    <a href="borrar.html" class="btn btn-danger">
+      <i class="fa-solid fa-trash"></i>
+    </a>
+  </div>
+
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+
+  <!-- Script para manejar el envío del formulario con AJAX -->
+  <script>
+    $(document).ready(function() {
+      $('#addUserForm').on('submit', function(e) {
+        e.preventDefault(); // Evita que el formulario se envíe de manera tradicional
+        
+        // Recopilar los datos del formulario
+        var formData = $(this).serialize();
+
+        // Enviar los datos mediante AJAX
+        $.ajax({
+          url: '../backend/insertar.php', // Ruta al archivo PHP donde se insertan los datos
+          type: 'POST',
+          data: formData,
+          success: function(response) {
+            alert('Usuario agregado con éxito');
+            location.reload(); // Recargar la página después del éxito
+          },
+          error: function() {
+            alert('Error al agregar el usuario');
+          }
+        });
+      });
+    });
+  </script>
+</body>
+</html>

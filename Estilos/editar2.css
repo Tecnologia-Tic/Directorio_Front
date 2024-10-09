@@ -1,0 +1,93 @@
+/* General Body Styling */
+body {
+    background-color: #f8f9fa; /* Light background color */
+  }
+  
+  /* Form Container Styling */
+  .form-container {
+    background-color: #fff; /* White background for the form */
+    padding: 2rem; /* Internal padding */
+    border-radius: 15px; /* Rounded corners */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+    max-width: 600px; /* Maximum width for the form */
+    margin: 3rem auto; /* Centering margin */
+  }
+  
+  /* Header Styling */
+  h2 {
+    font-family: 'Arial', sans-serif; /* Font for header */
+    color: #333; /* Text color for header */
+    margin-bottom: 1.5rem; /* Bottom margin for header */
+  }
+  
+  /* Form Group Spacing */
+  .form-group {
+    margin-bottom: 1.5rem; /* Bottom margin for form groups */
+  }
+  
+  /* Input and Select Fields */
+  .form-control {
+    border-radius: 10px; /* Rounded corners for input fields */
+  }
+  
+  select.form-control {
+    height: calc(2.25rem + 2px); /* Adjust height of dropdown */
+    background: #f8f9fa; /* Dropdown background */
+  }
+  
+  /* Button Styling */
+  .btn {
+    width: 48%; /* Equal width for both buttons */
+    padding: 0.5rem; /* Internal padding */
+    border-radius: 10px; /* Rounded corners for buttons */
+    font-size: 17px; /* Text size */
+    font-family: 'Nexa Bold', sans-serif; /* Font family */
+  }
+  
+  /* Success Button */
+  .btn-success {
+    background-color: #007bff !important; /* Blue background, overriding inline styles */
+    border-color: #007bff !important; /* Blue border */
+    color: white !important; /* White text */
+  }
+  
+  /* Secondary Button */
+  .btn-secondary {
+    background-color: #6c757d; /* Gray background */
+    margin-top: 0; /* No top margin */
+    color: white; /* White text */
+  }
+  
+  /* Button Alignment */
+  button + .btn-secondary {
+    margin-left: 4%; /* Small left margin for separation between buttons */
+  }
+
+  .btn-center {
+    display: block; /* Para que ocupe todo el ancho posible */
+    margin: 1.5rem auto; /* Margen superior e inferior para separación */
+  }
+  
+  /* Fixed Button Container */
+  .fixed-buttons a {
+    border-radius: 50%; /* Rounded corners */
+    padding: 10px; /* Internal padding */
+    margin: 5px; /* Margin between buttons */
+    display: inline-block; /* Inline display */
+  }
+  
+  .fixed-buttons .btn {
+    min-width: 40px; /* Minimum width for fixed buttons */
+  }
+  
+  @font-face {
+    font-family: 'Nexa Bold';
+    src: url('Nexa-Bold.ttf') format('woff2'),
+         url('Nexa-Bold.ttf') format('woff');
+    font-weight: normal;
+    font-style: normal;
+  }
+  
+  h1, h2 {
+    font-family: 'Aptos Black', sans-serif;
+  }

@@ -1,0 +1,15 @@
+
+/* Estilos del formulario */
+.form-container {
+    margin-top: 20px;
+  }
+  
+  .fixed-buttons {
+    position: fixed;
+    bottom: 20px; /* Ajusta la distancia desde el fondo */
+    right: 20px; /* Ajusta la distancia desde la derecha */
+    display: flex;
+    flex-direction: column; /* Alinea los botones en columna */
+    gap: 10px; /* Espacio entre los botones */
+  }
+  

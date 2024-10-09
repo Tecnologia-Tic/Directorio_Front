@@ -1,0 +1,73 @@
+/* General Body Styling */
+body {
+    background-color: #f8f9fa; /* Light background color */
+}
+
+/* Form Container Styling */
+.form-container {
+    background-color: #fff; /* White background for the form */
+    padding: 2rem; /* Internal padding */
+    border-radius: 15px; /* Rounded corners */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+    max-width: 600px; /* Maximum width for the form */
+    margin: 3rem auto; /* Centering margin */
+}
+
+/* Header Styling */
+h2 {
+    font-family: 'Arial', sans-serif; /* Font for header */
+    color: #333; /* Text color for header */
+    margin-bottom: 1.5rem; /* Bottom margin for header */
+}
+
+/* Form Group Spacing */
+.form-group {
+    margin-bottom: 1.5rem; /* Bottom margin for form groups */
+}
+
+/* Input and Select Fields */
+.form-control {
+    border-radius: 10px; /* Rounded corners for input fields */
+}
+
+select.form-control {
+    height: calc(2.25rem + 2px); /* Adjust height of dropdown */
+    background: #f8f9fa; /* Dropdown background */
+}
+
+/* Button Styling */
+.btn {
+    width: 48%; /* Equal width for both buttons */
+    padding: 0.5rem; /* Internal padding */
+    border-radius: 10px; /* Rounded corners for buttons */
+    font-size: 17px; /* Text size */
+    font-family: 'Nexa Bold', sans-serif; /* Font family */
+}
+
+/* Alinear botones lado a lado */
+.form-container .btn-container {
+    display: flex;
+    justify-content: space-between;
+}
+
+.btn-danger {
+    background-color: #dc3545 !important;
+    color: white;
+}
+
+.btn-secondary {
+    background-color: #6c757d;
+    color: white;
+}
+
+@font-face {
+    font-family: 'Nexa Bold';
+    src: url('Nexa-Bold.ttf') format('woff2'),
+         url('Nexa-Bold.ttf') format('woff');
+    font-weight: normal;
+    font-style: normal;
+  }
+  
+  h1, h2 {
+    font-family: 'Aptos Black', sans-serif;
+  }

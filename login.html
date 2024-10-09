@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Iniciar Sesión</title>
+    <!-- Enlace al archivo de CSS -->
+    <link rel="stylesheet" href="Estilos/logs.css">
+    <link rel="stylesheet" href="Estilos/fondo_login.css">
+</head>
+<body>
+
+    <div class="login-container">
+        <!-- Icono o logo -->
+        <div class="icono-corazon">
+            <img src="mpn2.png" alt="Logo" class="logo" style="width: 150px; height: auto;">
+        </div>
+        <!-- Título -->
+        <h2>Inicia sesión</h2>
+        <br>
+    
+
+        <!-- Formulario de inicio de sesión -->
+        <form action="../backend/verificar_login.php" method="POST">
+            <label for="nombre_usuario">Nombre de usuario</label>
+            <input type="text" id="nombre_usuario" name="nombre_usuario" placeholder="Escribe tu usuario" required>
+
+            <label for="contrasena">Contraseña</label>
+            <input type="password" id="contrasena" name="contrasena" placeholder="Escribe tu contraseña" required>
+
+            <button type="submit">Iniciar Sesión</button>
+
+            <!-- Enlace para restablecer la contraseña -->
+            <div class="restablecer">
+                <a href="cambiar_contraseña.html">¿Olvidaste tu contraseña?</a>
+            </div>
+
+            <!-- Enlace para crear cuenta -->
+            <div class="crear-cuenta">
+                <p>¿No tienes cuenta? <a href="registro.html">Crear</a></p>
+            </div>
+        </form>
+    </div>
+
+</body>
+</html>

@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Editar Usuario</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+  <link rel="stylesheet" href="Estilos/editar2.css">
+</head>
+<body>|
+  <div class="container">
+    <h2 class="text-center mt-4" style="font-size: 35px; font-family: 'Nexa Bold'">Editar Usuario</h2>
+
+    <!-- Formulario para seleccionar departamento y usuario -->
+    <form id="selectUserForm">
+      <div class="form-group" style="font-size: 17px; font-family: 'Nexa Bold'">
+        <label for="departamento" style="font-size: 17px; font-family: 'Nexa Bold'">Selecciona el departamento:</label>
+        <select class="form-control" id="departamento" name="departamento" required>
+            <option value="">Selecciona un departamento</option>
+          <option value="tecnologia">Tecnología</option>
+          <option value="financiera">Financiera</option>
+          <option value="fundacion">Fundación</option>
+          <option value="universidad">Universidad</option>
+          <option value="optimizacion">Optimización</option>
+          <option value="presidencia">Presidencia</option>
+        </select>
+      </div>
+
+      <div class="form-group" style="font-size: 17px; font-family: 'Nexa Bold'">
+        <label for="usuario">Selecciona el usuario:</label>
+        <select class="form-control" id="usuario" name="usuario" required>
+          <!-- Este campo se llenará dinámicamente -->
+        </select>
+      </div>
+
+      <button type="button" id="cargarUsuario" class="btn btn-primary">Cargar Datos</button>
+      <a href="directorio.html" class="btn btn-secondary ml-2">Regresar a inicio</a> <!-- Botón Regresar -->
+    </form>
+
+    <!-- Formulario para editar datos del usuario -->
+    <form id="editUserForm" action="../backend/editar_usuario.php" method="POST" style="display:none;">
+      <br>
+      <div class="form-group" style="font-size: 17px; font-family: 'Nexa Bold'">
+        <label for="cargo">Cargo:</label>
+        <input type="text" class="form-control" id="cargo" name="cargo" required>
+      </div>
+      <div class="form-group" style="font-size: 17px; font-family: 'Nexa Bold'">
+        <label for="nombre">Nombre:</label>
+        <input type="text" class="form-control" id="nombre" name="nombre" required>
+      </div>
+      <div class="form-group" style="font-size: 17px; font-family: 'Nexa Bold'">
+        <label for="extension">Extensión:</label>
+        <input type="text" class="form-control" id="extension" name="extension" required>
+      </div>
+      <div class="form-group" style="font-size: 17px; font-family: 'Nexa Bold'">
+        <label for="correo">Correo Electrónico:</label>
+        <input type="email" class="form-control" id="correo" name="correo" required>
+      </div>
+
+      <input type="hidden" name="id" id="userIdHidden">
+      <input type="hidden" name="departamento" id="tablaHidden">
+
+      <button type="submit" class="btn btn-success btn-center" style="font-size: 17px; font-family: 'Nexa Bold'">Guardar Cambios</button>
+    </form>
+  </div>
+
+  <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+  <script>
+    // Lógica para cargar usuarios según el departamento seleccionado
+    $('#departamento').change(function() {
+      var departamento = $(this).val();
+
+      // Limpiamos el select de usuarios
+      $('#usuario').html('<option value="">Cargando...</option>');
+
+      // Hacemos la solicitud AJAX para cargar los usuarios del departamento seleccionado
+      $.ajax({
+        url: '../backend/obtener_usuarios.php',
+        method: 'POST',
+        data: { departamento: departamento },
+        dataType: 'json',
+        success: function(response) {
+          if (response.error) {
+            alert(response.error);
+          } else {
+            $('#usuario').html('<option value="">Selecciona un usuario</option>');
+            $.each(response, function(index, usuario) {
+              $('#usuario').append('<option value="' + usuario.id + '">' + usuario.nombre + '</option>');
+            });
+          }
+        },
+        error: function() {
+          alert('Error al cargar los usuarios.');
+        }
+      });
+    });
+
+    // Lógica para cargar los datos del usuario seleccionado
+    $('#cargarUsuario').click(function() {
+      var usuarioId = $('#usuario').val();
+      var departamento = $('#departamento').val();
+
+      if (usuarioId === "") {
+        alert('Por favor selecciona un usuario.');
+        return;
+      }
+
+      // Hacemos la solicitud AJAX para obtener los datos del usuario
+      $.ajax({
+        url: '../backend/obtener_usuarios.php',
+        method: 'POST',
+        data: { departamento: departamento, id: usuarioId },
+        dataType: 'json',
+        success: function(response) {
+          if (response.error) {
+            alert(response.error);
+          } else if (response.length > 0) {
+            // Mostramos los datos en el formulario de edición
+            var usuario = response[0];
+            $('#cargo').val(usuario.cargo);
+            $('#nombre').val(usuario.nombre);
+            $('#extension').val(usuario.extension);
+            $('#correo').val(usuario.correo);
+            $('#userIdHidden').val(usuario.id);
+            $('#tablaHidden').val(departamento);
+
+            // Mostramos el formulario de edición
+            $('#editUserForm').show();
+          } else {
+            alert('No se encontraron datos para este usuario.');
+          }
+        },
+        error: function() {
+          alert('Error al cargar los datos del usuario.');
+        }
+      });
+    });
+
+    // Lógica para manejar el envío del formulario de edición
+    $('#editUserForm').on('submit', function(e) {
+      e.preventDefault(); // Evitar el envío normal del formulario
+
+      // Hacemos la solicitud AJAX para actualizar el usuario
+      $.ajax({
+        url: $(this).attr('action'), // URL del formulario
+        method: 'POST',
+        data: $(this).serialize(),
+        success: function(response) {
+          // Convierte la respuesta JSON en un objeto JavaScript
+          var data = JSON.parse(response);
+
+          if (data.error) {
+            alert(data.error);
+          } else {
+            alert(data.mensaje); // Mostrar mensaje de éxito
+            location.reload(); // Recargar la página para ver los cambios
+          }
+        },
+        error: function() {
+          alert('Error al actualizar el usuario.');
+        }
+      });
+    });
+  </script>
+</body>
+</html>

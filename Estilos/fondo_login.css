@@ -1,0 +1,22 @@
+/* Fondo de la pantalla completa */
+body {
+    background-image: url('../fondo2.png'); /* Cambia 'ruta_de_tu_imagen.jpg' por la ruta correcta */
+    background-size: cover; /* Asegura que la imagen cubra toda la pantalla */
+    background-position: center; /* Centra la imagen */
+    background-repeat: no-repeat; /* Evita que la imagen se repita */
+    height: 100vh; /* Asegura que el fondo cubra toda la altura de la pantalla */
+    margin: 0; /* Elimina los márgenes */
+    display: flex; /* Para centrar el login */
+    justify-content: center; /* Centra horizontalmente */
+    align-items: center; /* Centra verticalmente */
+}
+
+/* Estilo del contenedor del login */
+.login-container {
+    background-color: rgba(255, 255, 255, 0.9); /* Fondo blanco semitransparente para el login */
+    padding: 2rem; /* Espacio interno */
+    border-radius: 15px; /* Esquinas redondeadas */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Sombra sutil */
+    width: 100%;
+    max-width: 400px; /* Limita el ancho del formulario */
+}

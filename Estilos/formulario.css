@@ -1,0 +1,77 @@
+body {
+    background-color: #f8f9fa; /* Fondo claro para el cuerpo */
+  }
+  
+  .form-container {
+    background-color: #fff; /* Fondo blanco para el formulario */
+    padding: 2rem; /* Espaciado interno */
+    border-radius: 15px; /* Bordes redondeados */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Sombra sutil */
+    max-width: 600px; /* Ancho máximo del formulario */
+    margin: 3rem auto; /* Margen automático para centrar */
+  }
+  
+  h2 {
+    margin-bottom: 1.5rem; /* Margen inferior del encabezado */
+  }
+  
+  .form-group {
+    margin-bottom: 1.5rem; /* Margen inferior de cada grupo de formulario */
+  }
+  
+  .form-control {
+    border-radius: 10px; /* Bordes redondeados para campos de entrada */
+  }
+  
+  select.form-control {
+    height: calc(2.25rem + 2px); /* Ajustar altura del menú desplegable */
+    background: #f8f9fa; /* Fondo del menú desplegable */
+  }
+  
+  .btn {
+    width: 100%; /* Botones de ancho completo */
+    padding: 0.5rem; /* Espaciado interno */
+    border-radius: 10px; /* Bordes redondeados para los botones */
+  }
+  
+  .btn-blue {
+    background-color: #007bff; /* Color azul personalizado */
+    color: #fff; /* Color del texto en blanco */
+    border: none; /* Sin borde */
+    border-radius: 10px; /* Bordes redondeados */
+    padding: 0.5rem; /* Espaciado interno */
+    font-size: 17px; /* Tamaño de la fuente */
+  }
+  
+  .btn-blue:hover {
+    background-color: #0056b3; /* Color azul más oscuro al pasar el ratón */
+  }
+  
+  .btn-secondary {
+    background-color: #6c757d; /* Color de fondo gris */
+    margin-top: 1rem; /* Margen superior para separación */
+  }
+  
+  .fixed-buttons a {
+    border-radius: 50%; /* Bordes redondeados para los botones fijos */
+    padding: 10px; /* Espaciado interno */
+    margin: 5px; /* Espaciado entre botones */
+    display: inline-block; /* Alinear en línea */
+  }
+  
+  .fixed-buttons .btn {
+    min-width: 40px; /* Ancho mínimo para los botones fijos */
+  }
+  
+  
+@font-face {
+    font-family: 'Nexa Bold';
+    src: url('Nexa-Bold.ttf') format('woff2'),
+         url('Nexa-Bold.ttf') format('woff');
+    font-weight: normal;
+    font-style: normal;
+  }
+  
+  h1, h2 {
+    font-family: 'Aptos Black', sans-serif;
+  }

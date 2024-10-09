@@ -1,0 +1,104 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Roboto', sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #f0f0f5;
+}
+
+.login-container {
+    background-color: #fff;
+    border-radius: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    width: 350px;
+    padding: 40px;
+    text-align: center;
+}
+
+.icono-corazon {
+    margin-bottom: 20px;
+}
+
+.logo {
+    width: 80px;
+}
+
+h2 {
+    font-size: 24px;
+    margin-bottom: 10px;
+}
+
+p {
+    font-size: 14px;
+    color: #888;
+    margin-bottom: 30px;
+}
+
+label {
+    display: block;
+    font-weight: 700;
+    text-align: left;
+    margin-bottom: 5px;
+    color: #333;
+}
+
+input[type="text"],
+input[type="password"] {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 20px;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    background-color: #f9f9f9;
+    font-size: 14px;
+}
+
+button {
+    width: 100%;
+    padding: 10px;
+    background-color: #007bff;
+    border: none;
+    color: white;
+    font-size: 16px;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+button:hover {
+    background-color: #007bff;
+}
+
+.restablecer {
+    margin-top: 20px;
+}
+
+.restablecer a {
+    text-decoration: none;
+    font-size: 14px;
+    color: #007bff;
+}
+
+.crear-cuenta {
+    margin-top: 10px;
+}
+
+.crear-cuenta p {
+    font-size: 14px;
+    color: #888;
+}
+
+.crear-cuenta a {
+    color: #007bff;
+    text-decoration: none;
+    font-weight: 700;
+}
+
+

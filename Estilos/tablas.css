@@ -1,0 +1,57 @@
+/* Estilos personalizados para los acordeones */
+.card {
+    border-radius: 15px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    transition: box-shadow 0.3s ease, background-color 0.3s ease;
+  }
+  
+  .card-header {
+    background-color: #007bff; /* Azul permanente */
+    color: white; /* Texto blanco para mejor contraste */
+    border-radius: 15px 15px 0 0;
+    font-family: 'Nexa', sans-serif;
+    font-weight: bold;
+    font-size: 1.25rem; /* Tamaño de fuente más grande */
+    text-align: center; /* Centrar texto en el encabezado */
+  }
+  
+  .card-header .btn-link {
+    color: white; /* Asegura que el texto del botón sea blanco */
+    text-decoration: none;
+    display: block; /* Hacer que el botón ocupe todo el espacio */
+    width: 100%; /* Ancho completo */
+  }
+  
+  .card-header .btn-link:hover {
+    color: white; /* Mantiene el texto blanco al pasar el mouse */
+    background-color: #0056b3; /* Cambia a azul más oscuro al pasar el mouse */
+  }
+  
+  .card-body {
+    border-radius: 0 0 15px 15px;
+  }
+  
+  .table tbody tr:hover {
+    background-color: #f1f1f1;
+  }
+  
+   /* Centrar el texto del botón */
+   .accordion-button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    background-color: #007bff;
+    color: white;
+  }
+  
+  /* Eliminar la flecha de los acordeones */
+  .accordion-button::after {
+    display: none;
+  }
+  
+  /* Asegurarse de que los acordeones estén siempre abiertos */
+  .accordion-collapse.show {
+    display: block; /* Mostrar el contenido del acordeón */
+  }
+  
